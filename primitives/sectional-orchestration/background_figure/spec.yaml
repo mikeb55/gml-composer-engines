@@ -1,0 +1,50 @@
+id: background_figure
+name: Background Figure
+category: sectional-orchestration
+version: 0.1.0
+status: experimental
+purpose: Generates supporting rhythmic/harmonic figures behind lead material without stealing focus.
+inputs:
+  required:
+    - lead_material
+    - harmonic_context
+    - phrase_bounds
+  optional:
+    - figure_style
+    - density_limit
+parameters:
+  figure_style:
+    description: Type of figure (ostinato, pad, hits, counter-rhythm)
+    type: string
+    enum: [ostinato, pad, hits, counter_rhythm]
+    default: ostinato
+  density_limit:
+    description: Max rhythmic density (notes per bar) to avoid competition
+    type: number
+    default: 4
+rules:
+  - Background figure must not compete with lead for focus.
+  - Rhythmic and harmonic content must support, not obscure, lead.
+  - Density must stay below density_limit.
+  - Figure should reinforce harmonic rhythm.
+procedure:
+  - Parse lead_material for strong beats and rests.
+  - Generate figure from harmonic_context within phrase_bounds.
+  - Apply density_limit and figure_style.
+  - Ensure figure occupies non-lead zones or subservient register.
+outputs:
+  type: figure_spec
+  guarantees:
+    - Figure supports lead.
+    - Density within limit.
+    - No melodic competition with lead.
+evaluation:
+  success_conditions:
+    - Figure is audible but subordinate.
+    - No support-vs-competition violation.
+  failure_conditions:
+    - Figure competes with lead for focus.
+    - Density exceeds limit.
+    - Figure obscures lead material.
+dependencies: []
+tags: [sectional-orchestration, big band, Ellington, background, figure, support]

@@ -1,0 +1,46 @@
+id: brass_reed_contrast
+name: Brass Reed Contrast
+category: sectional-orchestration
+version: 0.1.0
+status: experimental
+purpose: Defines contrast behaviour between brass and reeds in colour, weight, and response.
+inputs:
+  required:
+    - brass_section
+    - reed_section
+    - phrase_context
+  optional:
+    - contrast_mode
+    - weight_balance
+parameters:
+  contrast_mode:
+    description: colour (timbre), weight (dynamic mass), response (articulation/attack)
+    type: string
+    enum: [colour, weight, response, combined]
+    default: combined
+  weight_balance:
+    description: Relative dynamic weight brass vs reeds (e.g. brass_heavy, balanced, reed_heavy)
+    type: string
+    default: balanced
+rules:
+  - Brass and reeds must be distinguishable in at least one dimension.
+  - Contrast supports dialogue, call-response, and textural variety.
+  - Weight balance affects density and focus.
+procedure:
+  - Determine contrast dimensions from contrast_mode.
+  - Apply weight_balance to section dynamics.
+  - Output contrast spec for downstream voicing and articulation.
+outputs:
+  type: contrast_spec
+  guarantees:
+    - Brass and reeds have defined contrast behaviour.
+    - No identical treatment when contrast is required.
+evaluation:
+  success_conditions:
+    - Brass and reeds are audibly distinct when contrast_mode is applied.
+    - Weight balance is respected.
+  failure_conditions:
+    - Brass and reeds indistinguishable (no contrast).
+    - Weight imbalance contradicts phrase intent.
+dependencies: []
+tags: [sectional-orchestration, big band, Ellington, brass, reeds, contrast, colour]

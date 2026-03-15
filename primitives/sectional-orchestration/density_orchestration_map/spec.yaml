@@ -1,0 +1,48 @@
+id: density_orchestration_map
+name: Density Orchestration Map
+category: sectional-orchestration
+version: 0.1.0
+status: experimental
+purpose: Controls how orchestration density changes across phrases and sections.
+inputs:
+  required:
+    - phrase_sequence
+    - section_spec
+  optional:
+    - density_curve
+    - max_density
+parameters:
+  density_curve:
+    description: Target density per phrase (sparse, medium, dense, tutti)
+    type: array
+    default: []
+  max_density:
+    description: Maximum simultaneous active sections
+    type: number
+    default: 4
+rules:
+  - Density must map to phrase_sequence (one value per phrase).
+  - Density transitions should be musically coherent (e.g. build to climax).
+  - max_density caps simultaneous sections.
+  - Sparse implies few sections; dense implies many; tutti implies full ensemble.
+procedure:
+  - Parse phrase_sequence for phrase count.
+  - Apply density_curve or derive from phrase structure.
+  - Map density to section activation per phrase.
+  - Enforce max_density.
+outputs:
+  type: density_map
+  guarantees:
+    - One density value per phrase.
+    - Density within valid range.
+    - max_density respected.
+evaluation:
+  success_conditions:
+    - Density logic is coherent across phrases.
+    - Transitions support musical flow (build, release).
+  failure_conditions:
+    - Density exceeds max_density.
+    - Abrupt or nonsensical density jumps.
+    - Missing density for phrase.
+dependencies: []
+tags: [sectional-orchestration, big band, Ellington, density, orchestration, tutti]

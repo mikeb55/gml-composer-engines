@@ -5,21 +5,17 @@
 - Register layers clear (melody high, backgrounds mid).
 - Section dialogue present when density allows.
 - Voicings playable and clear.
-- No register clash.
 - **Section roles never conflict** (one lead per phrase).
 - **Density map evolves logically** (build, release; no nonsensical jumps).
-- **Background figures do not override lead material** (support without competition).
-- **Brass/reed contrast is preserved** (audibly distinct when both active).
+- **Brass/reed contrast maintained** (audibly distinct when both active).
 
 ## Failure Conditions
 
 - Melody and background in same register band.
 - Impossible tessitura (e.g. trumpet below staff).
-- Unplayable voicings (e.g. closed in very low register).
-- Section overlap without intent.
+- Unplayable voicings.
 - **Role conflict**: two sections assigned lead.
 - **Density violation**: abrupt or nonsensical density jumps.
-- **Background competition**: background figure competes with lead for focus.
 - **Contrast loss**: brass and reeds indistinguishable.
 
 ## Test Cases
@@ -28,12 +24,8 @@
 |------|-------|----------|-------|
 | Role clarity | 8-bar phrase | One lead per phrase | Section roles never conflict |
 | Density logic | 4 phrases | Sparse → medium → dense → tutti | Density map evolves logically |
-| Background vs. lead | sax lead, trumpet background | Background subordinate | Background figures do not override lead |
-| Brass/reed contrast | brass + reeds active | Audibly distinct | Contrast preserved |
-| 8-bar | melody + harmony | Register + dialogue | |
-| Dense | density_target: high | More overlap, less dialogue | |
-| Sparse | density_target: low | Clear separation | |
-| Voicing | chord + spread: open | Open 4-way | |
+| Brass/reed contrast | brass + reeds active | Audibly distinct | Contrast maintained |
+| 8-bar Dm7→G7→Cmaj7 | melody + harmony | Register + dialogue | |
 
 ## Edge Cases
 

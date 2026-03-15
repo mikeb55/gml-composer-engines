@@ -1,0 +1,47 @@
+id: section_role_assignment
+name: Section Role Assignment
+category: sectional-orchestration
+version: 0.1.0
+status: experimental
+purpose: Assigns functional roles to sections such as lead, pad, background, counterline, punctuation, or support.
+inputs:
+  required:
+    - sections
+    - phrase_context
+  optional:
+    - role_preferences
+    - lead_section
+parameters:
+  role_preferences:
+    description: Preferred role per section (lead, pad, background, counterline, punctuation, support)
+    type: object
+    default: {}
+  lead_section:
+    description: Section carrying primary melodic material
+    type: string
+    default: null
+rules:
+  - Each section receives exactly one role per phrase.
+  - Lead role implies foreground; pad/background/support imply accompaniment.
+  - Counterline and punctuation are secondary foreground roles.
+  - Role assignment must respect section capabilities (e.g. reeds for pad, brass for punctuation).
+procedure:
+  - Parse phrase_context for foreground/background zones.
+  - Assign lead to primary melodic section.
+  - Assign pad, background, support to accompaniment sections.
+  - Assign counterline or punctuation where secondary material exists.
+outputs:
+  type: role_map
+  guarantees:
+    - Every section has a role.
+    - Lead is unique per phrase.
+    - Roles are mutually consistent (no support competing with lead).
+evaluation:
+  success_conditions:
+    - Role clarity: each section's function is unambiguous.
+    - No role conflict (e.g. two leads).
+  failure_conditions:
+    - Unassigned section.
+    - Support section competing with lead for focus.
+dependencies: []
+tags: [sectional-orchestration, big band, Ellington, role, lead, pad, background]

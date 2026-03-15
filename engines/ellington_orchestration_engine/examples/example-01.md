@@ -4,46 +4,39 @@
 
 harmonic_context: Dm7 (2 bars) | G7 (2 bars) | Cmaj7 (4 bars)
 melodic_material: Lead melody (bars 1–8)
-ensemble_spec: 5 saxes, 4 trumpets, 4 trombones, rhythm
+ensemble_spec: sax_section, trumpet_section, trombone_section, rhythm_section
 
-## Parameters
-
-register_preference: clear_separation
-dialogue_bias: 0.6
-voicing_spread_default: open
-density_build_bias: 0.7
-
-## Orchestration Plan (8 Bars)
+## Orchestration Behaviour (8 Bars)
 
 ### Bars 1–4
-- **saxes**: lead melody
-- **trombones**: pad (sustained chord tones)
-- **trumpets**: silent
-- **rhythm**: support (piano comping, bass, drums)
+- **sax_section**: leads melody
+- **trombone_section**: pad (sustained chord tones)
+- **trumpet_section**: silent
+- **rhythm_section**: support (piano comping, bass, drums)
 - **density**: sparse
 - **register**: melody high (saxes), pad mid (trombones)
 
 ### Bars 5–8
-- **trumpets**: answer phrase (call-response; reeds led, brass answers)
-- **saxes**: background figure (ostinato, density_limit 4)
-- **trombones**: pad (sustained)
-- **rhythm**: support, accents on phrase boundaries
+- **trumpet_section**: answers phrase (call-response; reeds led, brass answers)
+- **sax_section**: background figure (ostinato)
+- **trombone_section**: pad (sustained)
+- **rhythm_section**: support, accents on phrase boundaries
 - **density**: medium
 - **register**: melody high (trumpets), background mid (saxes)
 
-### Bars 9–12 (optional extension)
+### Optional extension (bars 9–12)
 - **brass**: shout (tutti brass)
-- **rhythm**: accents
+- **rhythm_section**: accents
 - **density**: dense / tutti
 
 ## Section Role Assignment
 
 | Section | Bars 1–4 | Bars 5–8 |
 |---------|----------|----------|
-| Saxes | lead | background |
-| Trumpets | — | lead |
-| Trombones | pad | pad |
-| Rhythm | support | support |
+| sax_section | lead | background |
+| trumpet_section | — | lead |
+| trombone_section | pad | pad |
+| rhythm_section | support | support |
 
 ## Brass/Reed Contrast
 
@@ -58,7 +51,3 @@ density_build_bias: 0.7
 - background_figure: sax ostinato bars 5–8
 - register_assignment: melody high, pad mid
 - section_timeline: call-response bars 5–8
-
-## Notes
-
-Classic ii–V–I orchestration. Saxes establish; trumpets answer. Background figure supports without competing. Density builds from sparse to medium. Ellington-style.

@@ -3,7 +3,7 @@ name: Ellington Orchestration Engine
 category: composer
 version: 0.2.0
 status: experimental
-purpose: Generate big-band section behaviour from harmonic input using sectional orchestration primitives.
+purpose: Determine orchestration behaviour across big-band sections from harmonic input.
 musical_scope:
   domains: [orchestration, voicing, section writing, big band]
   typical_contexts: [big band, jazz arranging, section backgrounds, Ellington-style]
@@ -31,28 +31,11 @@ parameters:
   voicing_spread_default: open
   density_build_bias: 0.7
   background_density_limit: 4
-ensemble_model:
-  sax_section:
-    - Alto 1
-    - Alto 2
-    - Tenor 1
-    - Tenor 2
-    - Baritone
-  trumpet_section:
-    - Trumpet 1
-    - Trumpet 2
-    - Trumpet 3
-    - Trumpet 4
-  trombone_section:
-    - Trombone 1
-    - Trombone 2
-    - Trombone 3
-    - Bass Trombone
-  rhythm_section:
-    - Piano
-    - Guitar
-    - Bass
-    - Drums
+sections:
+  - sax_section
+  - trumpet_section
+  - trombone_section
+  - rhythm_section
 style_constraints:
   - Clear register separation (melody high, backgrounds mid, bass low).
   - Brass and reeds alternate for dialogue when appropriate.
@@ -69,6 +52,13 @@ decision_logic:
   register: "Apply register_layer; melody to high, backgrounds to mid."
   dialogue: "Apply section_call_response when density allows; brass vs. reeds."
   voicing: "Apply voicing_spread; open for tutti, closed for section punches."
+behaviour:
+  determines:
+    - which section leads
+    - which section answers
+    - when background figures appear
+    - when density increases
+    - when tutti occurs
 outputs:
   type: orchestration
   produces: [register_assignment, section_timeline, voicings, role_map, density_map, contrast_spec]
