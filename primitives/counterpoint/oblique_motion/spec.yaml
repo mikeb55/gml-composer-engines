@@ -1,0 +1,33 @@
+id: oblique_motion
+name: Oblique Motion
+family: counterpoint
+type: primitive
+domain: counterpoint
+category: counterpoint
+version: 0.1.0
+status: experimental
+purpose: One voice sustains while another moves.
+summary: One voice sustains while another moves.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - sustained_voice
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - One voice may remain static
+    - Other voice moves stepwise or by leap
+rules:
+  - Allow one voice to remain static
+  - Other voice moves stepwise or by leap
+  - Useful for suspensions and harmonic anchoring
+evaluation:
+  success_conditions:
+    - Oblique motion valid when applied
+  failure_conditions:
+    - Invalid static+move combination
+dependencies: []
+tags: [counterpoint, voice leading, suspension, Bach]

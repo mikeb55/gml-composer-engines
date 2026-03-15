@@ -1,0 +1,35 @@
+id: suspension_chain
+name: Suspension Chain
+family: counterpoint
+type: primitive
+domain: counterpoint
+category: counterpoint
+version: 0.1.0
+status: experimental
+purpose: Generates prepared suspensions resolving downward.
+summary: Generates prepared suspensions resolving downward.
+inputs:
+  required:
+    - voices
+    - harmonic_context
+  optional:
+    - suspension_types
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Dissonance prepared
+    - Suspension resolves by step
+rules:
+  - Dissonance must be prepared
+  - Suspension resolves by step
+  - Can repeat across multiple voices
+  - Useful for Bach-style and modern counterpoint
+evaluation:
+  success_conditions:
+    - All suspensions prepared and resolved
+  failure_conditions:
+    - Unprepared dissonance
+    - Resolution not by step
+dependencies: []
+tags: [counterpoint, suspension, Bach, 4-3, 7-6]

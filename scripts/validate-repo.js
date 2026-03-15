@@ -74,11 +74,18 @@ const REQUIRED_PATHS = [
   'primitives/interaction/layer_priority/spec.yaml',
   'primitives/interaction/activation_window/spec.yaml',
   'primitives/interaction/conflict_resolution/spec.yaml',
+  'primitives/counterpoint/README.md',
+  'primitives/counterpoint/voice_independence/spec.yaml',
+  'primitives/counterpoint/contrary_motion/spec.yaml',
+  'primitives/counterpoint/oblique_motion/spec.yaml',
+  'primitives/counterpoint/parallel_avoidance/spec.yaml',
+  'primitives/counterpoint/suspension_chain/spec.yaml',
   'engines/composer/wayne_shorter_engine/spec.yaml',
   'engines/composer/andrew_hill_engine/spec.yaml',
   'engines/composer/bach_counterpoint_engine/spec.yaml',
   'engines/composer/ellington_orchestration_engine/spec.yaml',
   'engines/composer/stravinsky_rhythm_engine/spec.yaml',
+  'engines/guitar/jimmy_wyble_engine/spec.yaml',
 ];
 
 for (const p of REQUIRED_PATHS) {
@@ -109,6 +116,11 @@ const PRIMITIVE_SPEC_PATHS = [
   'primitives/interaction/layer_priority/spec.yaml',
   'primitives/interaction/activation_window/spec.yaml',
   'primitives/interaction/conflict_resolution/spec.yaml',
+  'primitives/counterpoint/voice_independence/spec.yaml',
+  'primitives/counterpoint/contrary_motion/spec.yaml',
+  'primitives/counterpoint/oblique_motion/spec.yaml',
+  'primitives/counterpoint/parallel_avoidance/spec.yaml',
+  'primitives/counterpoint/suspension_chain/spec.yaml',
 ];
 
 const ENGINE_SPEC_PATHS = [
@@ -117,6 +129,7 @@ const ENGINE_SPEC_PATHS = [
   'engines/composer/bach_counterpoint_engine/spec.yaml',
   'engines/composer/ellington_orchestration_engine/spec.yaml',
   'engines/composer/stravinsky_rhythm_engine/spec.yaml',
+  'engines/guitar/jimmy_wyble_engine/spec.yaml',
 ];
 
 for (const p of PRIMITIVE_SPEC_PATHS) {
@@ -222,6 +235,11 @@ const PRIMITIVE_DIRS = [
   'primitives/interaction/layer_priority',
   'primitives/interaction/activation_window',
   'primitives/interaction/conflict_resolution',
+  'primitives/counterpoint/voice_independence',
+  'primitives/counterpoint/contrary_motion',
+  'primitives/counterpoint/oblique_motion',
+  'primitives/counterpoint/parallel_avoidance',
+  'primitives/counterpoint/suspension_chain',
 ];
 
 const ENGINE_DIRS = [
@@ -230,6 +248,7 @@ const ENGINE_DIRS = [
   'engines/composer/bach_counterpoint_engine',
   'engines/composer/ellington_orchestration_engine',
   'engines/composer/stravinsky_rhythm_engine',
+  'engines/guitar/jimmy_wyble_engine',
 ];
 
 for (const dir of [...PRIMITIVE_DIRS, ...ENGINE_DIRS]) {

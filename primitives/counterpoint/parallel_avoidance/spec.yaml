@@ -1,0 +1,32 @@
+id: parallel_avoidance
+name: Parallel Avoidance
+family: counterpoint
+type: primitive
+domain: counterpoint
+category: counterpoint
+version: 0.1.0
+status: experimental
+purpose: Avoid parallel fifths and octaves between voices.
+summary: Avoid parallel fifths and octaves between voices.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - strict_mode
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Parallel fifths and octaves detected or avoided
+rules:
+  - Detect parallel motion forming perfect fifth or octave
+  - Discourage repeated parallel intervals across beats
+  - Allow occasional stylistic exceptions
+evaluation:
+  success_conditions:
+    - No parallel fifths or octaves when strict
+  failure_conditions:
+    - Parallel fifth or octave undetected when present
+dependencies: []
+tags: [counterpoint, voice leading, Bach, parallel fifths]

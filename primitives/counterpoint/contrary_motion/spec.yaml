@@ -1,0 +1,32 @@
+id: contrary_motion
+name: Contrary Motion
+family: counterpoint
+type: primitive
+domain: counterpoint
+category: counterpoint
+version: 0.1.0
+status: experimental
+purpose: Encourages voices to move in opposite directions.
+summary: Encourages voices to move in opposite directions.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - preference_strength
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Contrary motion preferred over parallel
+rules:
+  - When voice A ascends, voice B prefers descending motion
+  - Contrary motion preferred over parallel motion
+  - Promotes contrapuntal independence
+evaluation:
+  success_conditions:
+    - Contrary motion present where applicable
+  failure_conditions:
+    - Sustained parallel motion when contrary was possible
+dependencies: []
+tags: [counterpoint, voice leading, Bach]

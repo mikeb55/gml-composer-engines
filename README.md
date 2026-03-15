@@ -37,6 +37,7 @@ Experimental design lab for the Conductor Engine Architecture (CEA) within the G
 ## Current Focus
 
 - Jazz big band arranging.
+- Solo guitar / contrapuntal guitar engines (e.g. Jimmy Wyble two-line).
 - Beatrice relevance: motivic development, sectional dialogue, density growth.
 - Wayne Shorter, Ellington, Bach, Stravinsky as reference styles.
 

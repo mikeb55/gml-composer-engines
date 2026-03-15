@@ -1,0 +1,75 @@
+id: jimmy_wyble_engine
+name: Jimmy Wyble Engine
+category: composer-engine
+version: 0.1.0
+status: experimental
+purpose: Generate two-voice contrapuntal guitar material in the spirit of Jimmy Wyble's two-line improvisation method, prioritising voice independence, implied harmony, contrary/oblique motion, and playable linear texture.
+musical_scope:
+  domains: [solo guitar, two-line improvisation, contrapuntal etude, harmonic implication]
+  typical_contexts: [solo guitar etudes, EP repertoire reduction, polyphonic guitar writing]
+inputs:
+  required:
+    - harmonic_context
+    - register_plan
+  optional:
+    - motif_seed
+    - phrase_length
+    - density_profile
+    - guitar_range
+    - rhythmic_profile
+primitives:
+  required:
+    - voice_independence
+    - contrary_motion
+    - oblique_motion
+    - parallel_avoidance
+  optional:
+    - suspension_chain
+    - transform_fragment
+    - transform_transposition
+    - handoff
+    - activation_window
+parameters:
+  independence_bias: 0.8
+  dyad_density: 0.6
+  crossing_tolerance: 0.3
+  chromaticism_level: 0.2
+  register_overlap_tolerance: 0.4
+style_constraints:
+  - Two voices only by default
+  - Both voices must remain melodically coherent
+  - Avoid reducing one voice to static accompaniment
+  - Favour contrary and oblique motion over continuous parallel motion
+  - Harmony should emerge from line interaction rather than constant block voicing
+  - Preserve playability for solo guitar
+  - Allow momentary voice crossing when musically justified
+  - Avoid generic chord-melody texture
+decision_logic:
+  line_generation: "Generate two independent melodic lines; apply voice_independence."
+  motion_preference: "Apply contrary_motion and oblique_motion; minimise parallel via parallel_avoidance."
+  harmonic_implication: "Harmony emerges from dyadic events; avoid full block voicing."
+  register_behaviour: "Respect register_plan; allow crossing within crossing_tolerance."
+  density_control: "Use dyad_density to balance activity; avoid static filler."
+outputs:
+  type: contrapuntal_guitar_material
+  produces: [upper_line, lower_line, implied_harmonic_profile, dyadic_events, playable_etude_material]
+evaluation:
+  success_conditions:
+    - Both voices sound independent
+    - Harmonic movement is implied clearly enough without full vertical saturation
+    - Texture remains guitar-playable
+    - Motion avoids excessive parallel perfect intervals
+    - Output feels like contrapuntal line writing rather than melody plus filler
+  failure_conditions:
+    - One voice becomes mere accompaniment
+    - Too many static filler dyads
+    - Implied harmony is too weak or too muddy
+    - Writing is not realistically playable on guitar
+test_prompts:
+  - "Generate an 8-bar two-line study over a ii-V-I progression"
+  - "Generate a contrapuntal etude fragment from a motif seed"
+  - "Generate two-voice material with high contrary-motion bias"
+dependencies:
+  knowledge_sources: [gml-codex, future guitar/counterpoint notes, counterpoint primitive family]
+  related_engines: [bach_counterpoint_engine, contemporary_counterpoint_engine]
+tags: [Jimmy Wyble, guitar, counterpoint, two-line, etude]
