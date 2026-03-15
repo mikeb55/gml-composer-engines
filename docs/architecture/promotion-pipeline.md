@@ -3,14 +3,14 @@
 ## Path
 
 ```
-gml-composer-engines (research/design)
+gml-composer-engines (research/design) — standalone repo, upstream of creative-rule-engines
     → creative-rule-engines (validated rules)
     → creative-engines (execution)
 ```
 
 ## Stages
 
-**Research/design** — Primitives and engines are designed, specified, and tested in this repo. Status: draft or experimental.
+**Research/design** — Primitives and engines are designed, specified, and tested in gml-composer-engines. Status: draft or experimental.
 
 **Validation** — Outputs meet success conditions. Behaviour is documented. Edge cases are handled. Status: validated.
 

@@ -1,0 +1,9 @@
+{
+  "name": "gml-composer-engines",
+  "description": "Experimental design lab for the Conductor Engine Architecture within the GML ecosystem",
+  "version": "0.1.0",
+  "scripts": {
+    "validate": "node scripts/validate-repo.js",
+    "test": "node scripts/validate-repo.js"
+  }
+}

@@ -2,28 +2,29 @@
 
 ## Scope
 
-- Validate folder structure
-- Validate all spec files parse
-- Validate internal references (primitives, engines) are consistent
-- Run primitive test cases (when executable)
-- Run engine test prompts (when executable)
+- Structural validation (automated via `npm run validate`)
+- Spec completeness validation
+- Terminology consistency checks
+- Future: musical validation, primitive/engine runtime tests
 
-## Primitive Validation Criteria
+## Structural Validation
 
-1. spec.yaml exists and is valid YAML
-2. Required fields present: id, name, category, purpose, inputs, outputs
-3. notes.md exists
-4. At least one example exists
-5. test-spec.md exists with success/failure conditions and test cases
+Automated by `scripts/validate-repo.js`. Checks:
 
-## Engine Validation Criteria
+- Required files and directories exist
+- Primitive specs contain: id, name, category, version, status, purpose, inputs, parameters, outputs, evaluation, tags
+- Engine specs contain: id, name, category, version, status, purpose, musical_scope, inputs, primitives, parameters, style_constraints, outputs, evaluation, tags
+- Core docs contain: primitive, engine, conductor, promotion, validated
+- No stale repo references (old repo name or URL)
+- Conductor identity: "not a style engine" stated
+- Examples: engine-stack-examples has ≥3 stacks; beatrice-big-band-stack has required phrases
+- Every primitive/engine with spec.yaml has notes.md, examples/example-01.md, tests/test-spec.md
 
-1. spec.yaml exists and is valid YAML
-2. Required fields present: id, name, category, purpose, primitives, outputs
-3. All required primitives exist in primitives/
-4. notes.md exists
-5. At least one example exists
-6. test-spec.md exists
+## Spec Completeness Validation
+
+- spec.yaml exists and parses
+- Required fields present per schema
+- notes.md, examples, test-spec.md present
 
 ## Terminology Consistency
 
@@ -33,6 +34,8 @@
 - promotion (lowercase)
 - validated (lowercase)
 
-## Future
+## Future Musical Validation
 
-When executable test harness exists: run primitive test cases from test-spec.md; run engine test prompts; report pass/fail.
+- Primitive test cases from test-spec.md (executable)
+- Engine test prompts (executable)
+- Output quality evaluation

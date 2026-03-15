@@ -1,6 +1,6 @@
 # GML Composer Engines
 
-Experimental design lab for the Conductor Engine Architecture (CEA) within the GML ecosystem. Composition emerges from specialised engines coordinated by a Conductor Engine. Engines are built from reusable musical primitives.
+Experimental design lab for the Conductor Engine Architecture (CEA) within the GML ecosystem. This repository is its own project; it sits upstream of `creative-rule-engines` and is the design lab, not a submodule or nested component of any other repo. Composition emerges from specialised engines coordinated by a Conductor Engine. Engines are built from reusable musical primitives.
 
 ## Ecosystem
 
@@ -43,6 +43,10 @@ Experimental design lab for the Conductor Engine Architecture (CEA) within the G
 ## Long-term Vision
 
 A Conductor Engine that assembles stacks of specialised engines (melody, harmony, counterpoint, rhythm, orchestration) into coherent compositions. Engines remain modular; style emerges from combination and parameterisation.
+
+## Validation
+
+The repo includes automated structural tests. Run `npm run validate` (or `npm test`) locally. CI runs validation on push and pull request via GitHub Actions. These checks validate folder structure, spec completeness, and terminology consistency. They do not validate musical quality or runtime behaviour.
 
 ## Next Steps
 
