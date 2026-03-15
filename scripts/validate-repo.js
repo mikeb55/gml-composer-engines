@@ -85,16 +85,23 @@ const REQUIRED_PATHS = [
   'primitives/guitar/playability_constraint/spec.yaml',
   'primitives/guitar/dyad_density_control/spec.yaml',
   'primitives/guitar/string_set_preference/spec.yaml',
+  'engines/composer/wayne_shorter_engine/spec.yaml',
+  'engines/composer/andrew_hill_engine/spec.yaml',
+  'engines/composer/bach_counterpoint_engine/spec.yaml',
+  'engines/composer/stravinsky_rhythm_engine/spec.yaml',
+  'engines/guitar/jimmy_wyble_engine/spec.yaml',
+];
+
+const SECTIONAL_ORCHESTRATION_PATHS = [
   'primitives/sectional-orchestration/section_role_assignment/spec.yaml',
   'primitives/sectional-orchestration/brass_reed_contrast/spec.yaml',
   'primitives/sectional-orchestration/background_figure/spec.yaml',
   'primitives/sectional-orchestration/density_orchestration_map/spec.yaml',
-  'engines/composer/wayne_shorter_engine/spec.yaml',
-  'engines/composer/andrew_hill_engine/spec.yaml',
-  'engines/composer/bach_counterpoint_engine/spec.yaml',
+];
+
+const ELLINGTON_PATHS = [
   'engines/ellington_orchestration_engine/spec.yaml',
-  'engines/composer/stravinsky_rhythm_engine/spec.yaml',
-  'engines/guitar/jimmy_wyble_engine/spec.yaml',
+  'engines/composer/ellington_orchestration_engine/spec.yaml',
 ];
 
 for (const p of REQUIRED_PATHS) {
@@ -102,6 +109,22 @@ for (const p of REQUIRED_PATHS) {
   if (!fileExists(p)) {
     fail(`Missing required path: ${p}`);
   }
+}
+
+if (fileExists('primitives/sectional-orchestration')) {
+  for (const p of SECTIONAL_ORCHESTRATION_PATHS) {
+    filesChecked++;
+    if (!fileExists(p)) {
+      fail(`Missing required path: ${p}`);
+    }
+  }
+}
+
+const ellingtonExists = ELLINGTON_PATHS.some((p) => fileExists(p));
+if (!ellingtonExists) {
+  fail('Missing required Ellington engine spec (engines/ellington_orchestration_engine or engines/composer/ellington_orchestration_engine)');
+} else {
+  filesChecked++;
 }
 
 // B. Spec file shape checks
@@ -145,6 +168,7 @@ const ENGINE_SPEC_PATHS = [
   'engines/composer/andrew_hill_engine/spec.yaml',
   'engines/composer/bach_counterpoint_engine/spec.yaml',
   'engines/ellington_orchestration_engine/spec.yaml',
+  'engines/composer/ellington_orchestration_engine/spec.yaml',
   'engines/composer/stravinsky_rhythm_engine/spec.yaml',
   'engines/guitar/jimmy_wyble_engine/spec.yaml',
 ];
@@ -272,6 +296,7 @@ const ENGINE_DIRS = [
   'engines/composer/andrew_hill_engine',
   'engines/composer/bach_counterpoint_engine',
   'engines/ellington_orchestration_engine',
+  'engines/composer/ellington_orchestration_engine',
   'engines/composer/stravinsky_rhythm_engine',
   'engines/guitar/jimmy_wyble_engine',
 ];
