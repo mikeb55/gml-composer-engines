@@ -1,0 +1,48 @@
+id: phrase_asymmetry
+name: Phrase Asymmetry
+category: phrase
+version: 0.1.0
+status: experimental
+purpose: Bias phrase design away from square symmetry and toward uneven grouping.
+inputs:
+  required:
+    - phrase_material
+    - asymmetry_spec
+  optional:
+    - metre
+    - bar_count
+parameters:
+  asymmetry_spec:
+    description: Defines target asymmetry
+    type: object
+    properties:
+      bias: 0.0
+      grouping_pattern: []
+      avoid_square: true
+  bias:
+    description: 0 = symmetric, 1 = maximally asymmetric
+    range: [0, 1]
+    default: 0.6
+rules:
+  - Phrase length must not equal 4, 8, or 16 bars when avoid_square is true, unless overridden.
+  - Prefer groupings of 3, 5, 7, or irregular (e.g. 3+3+2, 5+3).
+  - grouping_pattern overrides default when provided.
+procedure:
+  - Analyse input phrase for current symmetry.
+  - Apply asymmetry_spec to determine target grouping.
+  - Propose phrase boundaries, extensions, or compressions.
+  - Output phrase structure with uneven groupings.
+outputs:
+  type: phrase_structure
+  guarantees:
+    - Output specifies bar-level or beat-level groupings.
+    - Groupings deviate from strict 4-bar symmetry when bias > 0.
+evaluation:
+  success_conditions:
+    - Phrase structure reflects asymmetry_spec.
+    - No unintended square phrasing when avoid_square is true.
+  failure_conditions:
+    - Output is 4+4 when 3+5 was requested.
+    - Degenerate (single-beat) phrase.
+dependencies: []
+tags: [phrase, asymmetry, jazz, contemporary]

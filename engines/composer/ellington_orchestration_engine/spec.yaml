@@ -1,0 +1,53 @@
+id: ellington_orchestration_engine
+name: Ellington Orchestration Engine
+category: composer
+version: 0.1.0
+status: experimental
+purpose: Generate section colour, brass-reed dialogue, and register-based voicing for big band.
+musical_scope:
+  domains: [orchestration, voicing, section writing]
+  typical_contexts: [big band, jazz arranging, section backgrounds]
+inputs:
+  required:
+    - harmonic_context
+    - melodic_material
+  optional:
+    - ensemble_spec
+    - density_target
+primitives:
+  required:
+    - register_layer
+    - section_call_response
+    - voicing_spread
+  optional: []
+parameters:
+  register_preference: clear_separation
+  dialogue_bias: 0.6
+  voicing_spread_default: open
+style_constraints:
+  - Clear register separation (melody high, backgrounds mid, bass low).
+  - Brass and reeds alternate for dialogue when appropriate.
+  - Voicings open for clarity; closed for density.
+decision_logic:
+  register: "Apply register_layer; melody to high, backgrounds to mid."
+  dialogue: "Apply section_call_response when density allows; brass vs. reeds."
+  voicing: "Apply voicing_spread; open for tutti, closed for section punches."
+outputs:
+  type: orchestration
+  produces: [register_assignment, section_timeline, voicings]
+evaluation:
+  success_conditions:
+    - Register layers are clear.
+    - Section dialogue present when density allows.
+    - Voicings are playable and clear.
+  failure_conditions:
+    - Register clash (melody and background in same band).
+    - Impossible tessitura for instruments.
+    - Unplayable voicings.
+test_prompts:
+  - "Orchestrate 8-bar melody for big band; brass-reed dialogue."
+  - "Assign backgrounds to register layers; open voicings."
+dependencies:
+  knowledge_sources: [gml-codex]
+  related_engines: []
+tags: [Ellington, orchestration, big band, arranging]

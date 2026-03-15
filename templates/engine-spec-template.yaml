@@ -1,0 +1,29 @@
+id:
+name:
+category:
+version:
+status:
+purpose:
+musical_scope:
+  domains: []
+  typical_contexts: []
+inputs:
+  required: []
+  optional: []
+primitives:
+  required: []
+  optional: []
+parameters: {}
+style_constraints: []
+decision_logic: {}
+outputs:
+  type:
+  produces: []
+evaluation:
+  success_conditions: []
+  failure_conditions: []
+test_prompts: []
+dependencies:
+  knowledge_sources: []
+  related_engines: []
+tags: []

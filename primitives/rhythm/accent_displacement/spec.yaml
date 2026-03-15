@@ -1,0 +1,48 @@
+id: accent_displacement
+name: Accent Displacement
+category: rhythm
+version: 0.1.0
+status: experimental
+purpose: Shift accent weight away from expected metric points.
+inputs:
+  required:
+    - rhythmic_material
+    - displacement_spec
+  optional:
+    - metre
+    - groove_template
+parameters:
+  displacement_spec:
+    description: Defines accent shift
+    type: object
+    properties:
+      shift_beats: 0
+      shift_subdivision: 0
+      target_beat: null
+      strength: 0.5
+  strength:
+    description: 0 = no displacement, 1 = full displacement
+    range: [0, 1]
+    default: 0.6
+rules:
+  - Accent must move away from strong beats (1, 3 in 4/4) when strength > 0.
+  - Displacement should be consistent within a phrase or explicitly varied for effect.
+  - shift_beats and shift_subdivision define the offset from expected accent.
+procedure:
+  - Identify current accent positions in rhythmic_material.
+  - Apply displacement_spec to compute new accent positions.
+  - Output rhythmic material with shifted accents (or accent map).
+outputs:
+  type: rhythmic_material
+  guarantees:
+    - Accent positions differ from unmodified strong beats when strength > 0.
+    - Output is valid within metre.
+evaluation:
+  success_conditions:
+    - Accents are displaced as specified.
+    - Metric tension is audible.
+  failure_conditions:
+    - Accents remain on strong beats when displacement was requested.
+    - Invalid rhythm (e.g. negative duration).
+dependencies: []
+tags: [rhythm, accent, Stravinsky, jazz, contemporary]

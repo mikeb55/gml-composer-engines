@@ -1,0 +1,49 @@
+id: motif_fragment
+name: Motif Fragment
+category: motivic
+version: 0.1.0
+status: experimental
+purpose: Extract and reuse part of a motif while preserving recognisable identity.
+inputs:
+  required:
+    - motif
+    - fragment_spec
+  optional:
+    - transposition
+    - inversion
+parameters:
+  fragment_spec:
+    description: Defines which part of the motif to extract
+    type: object
+    properties:
+      start_index: 0
+      end_index: null
+      head: boolean
+      tail: boolean
+      contour_only: boolean
+  preserve_identity:
+    description: Minimum overlap with original contour or intervals
+    default: 0.5
+rules:
+  - Fragment must retain at least one distinctive interval or contour feature of the source motif.
+  - Fragment length must be at least 2 and at most motif length minus 1.
+  - If contour_only is true, extract pitch contour; intervals may be compressed or expanded.
+procedure:
+  - Parse motif into discrete events (pitches, durations).
+  - Apply fragment_spec to select subset.
+  - Optionally apply transposition or inversion.
+  - Output fragment as new motif.
+outputs:
+  type: motif
+  guarantees:
+    - Output is a valid motif.
+    - Output is derived from input motif.
+evaluation:
+  success_conditions:
+    - Fragment is recognisably related to source.
+    - Output passes identity threshold if specified.
+  failure_conditions:
+    - Empty or degenerate fragment.
+    - Fragment identical to full motif when reduction was intended.
+dependencies: []
+tags: [motivic, development, jazz, classical]

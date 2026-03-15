@@ -1,0 +1,47 @@
+id: motif_sequence
+name: Motif Sequence
+category: motivic
+version: 0.1.0
+status: experimental
+purpose: Restate a motif at transposed pitch levels to create continuity.
+inputs:
+  required:
+    - motif
+    - sequence_spec
+  optional:
+    - harmonic_context
+    - boundary_constraint
+parameters:
+  sequence_spec:
+    description: Defines transposition levels and ordering
+    type: object
+    properties:
+      transpositions: []
+      direction: up | down | mixed
+      count: 2
+  strict_diatonic:
+    description: Limit transpositions to scale degrees
+    default: false
+rules:
+  - Each restatement must be a valid transposition of the motif.
+  - Sequence order must be deterministic given sequence_spec.
+  - Optional harmonic_context can constrain transpositions to chord tones or scale degrees.
+procedure:
+  - Parse motif.
+  - Generate transposition levels from sequence_spec.
+  - For each level, transpose motif and append to sequence.
+  - Apply boundary_constraint if provided (e.g. stay within register).
+outputs:
+  type: motif_sequence
+  guarantees:
+    - Output is an ordered list of transposed motifs.
+    - Each element is derived from input motif.
+evaluation:
+  success_conditions:
+    - All restatements are valid transpositions.
+    - Sequence creates audible continuity.
+  failure_conditions:
+    - Invalid transposition (e.g. out of range).
+    - Empty sequence.
+dependencies: []
+tags: [motivic, sequence, jazz, classical]

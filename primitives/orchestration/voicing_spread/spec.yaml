@@ -1,0 +1,52 @@
+id: voicing_spread
+name: Voicing Spread
+category: orchestration
+version: 0.1.0
+status: experimental
+purpose: Control spacing and density of chord tones across the ensemble.
+inputs:
+  required:
+    - chord
+    - spread_spec
+  optional:
+    - register_constraint
+    - doubling_rules
+parameters:
+  spread_spec:
+    description: Defines voicing spread and density
+    type: object
+    properties:
+      spread: closed | open | mixed
+      density: 1
+      bass_separation: true
+  spread:
+    description: closed = tight, open = wide, mixed = varied
+    enum: [closed, open, mixed]
+  density:
+    description: Number of chord tones (or voices) to include
+    default: 4
+rules:
+  - Chord tones must be correctly spelled.
+  - Spread must respect register_constraint (tessitura).
+  - bass_separation: bass note can be in separate octave from upper voices.
+  - Doubling rules override default when provided.
+procedure:
+  - Parse chord into root, quality, extensions.
+  - Select chord tones per density.
+  - Apply spread (closed: within octave; open: wider spacing).
+  - Apply bass_separation if true.
+  - Output voicing (pitch list or instrument assignment).
+outputs:
+  type: voicing
+  guarantees:
+    - All chord tones are present (or subset per density).
+    - Spacing matches spread_spec.
+evaluation:
+  success_conditions:
+    - Voicing is playable and clear.
+    - Spread matches specification.
+  failure_conditions:
+    - Incorrect chord spelling.
+    - Impossible spread (e.g. open in very low register).
+dependencies: []
+tags: [orchestration, voicing, harmony, big band]

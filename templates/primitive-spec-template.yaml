@@ -1,0 +1,20 @@
+id:
+name:
+category:
+version:
+status:
+purpose:
+inputs:
+  required: []
+  optional: []
+parameters: {}
+rules: []
+procedure: []
+outputs:
+  type:
+  guarantees: []
+evaluation:
+  success_conditions: []
+  failure_conditions: []
+dependencies: []
+tags: []

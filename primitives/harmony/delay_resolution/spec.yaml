@@ -1,0 +1,48 @@
+id: delay_resolution
+name: Delay Resolution
+category: harmony
+version: 0.1.0
+status: experimental
+purpose: Postpone expected harmonic arrival to preserve tension and ambiguity.
+inputs:
+  required:
+    - harmonic_context
+    - target_resolution
+  optional:
+    - delay_spec
+    - max_delay
+parameters:
+  delay_spec:
+    description: How to delay resolution
+    type: object
+    properties:
+      strategy: insertion | substitution | extension
+      insertion_chord: null
+      substitution_chord: null
+      extension_bars: 0
+  max_delay:
+    description: Maximum bars before resolution
+    default: 2
+rules:
+  - Resolution must eventually occur unless explicitly overridden.
+  - Inserted or substituted harmony must create tension relative to target.
+  - Delay should not exceed max_delay without justification.
+procedure:
+  - Identify expected resolution point from harmonic_context.
+  - Select delay strategy (insert dominant substitute, add ii–V, extend dominant).
+  - Insert or substitute harmony before target.
+  - Output delayed progression with new resolution point.
+outputs:
+  type: harmonic_progression
+  guarantees:
+    - Target resolution is reachable.
+    - At least one tension-creating element is inserted or substituted.
+evaluation:
+  success_conditions:
+    - Resolution is delayed as specified.
+    - Tension is audible and musically coherent.
+  failure_conditions:
+    - Resolution occurs at original expected point.
+    - Harmonic nonsense (unparseable progression).
+dependencies: []
+tags: [harmony, tension, jazz, modal]

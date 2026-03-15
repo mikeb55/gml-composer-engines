@@ -1,0 +1,56 @@
+id: bach_counterpoint_engine
+name: Bach Counterpoint Engine
+category: composer
+version: 0.1.0
+status: experimental
+purpose: Generate voice-independent counterpoint with controlled dissonance and suspension logic.
+musical_scope:
+  domains: [counterpoint, voice leading, dissonance treatment]
+  typical_contexts: [fugue, invention, chorale, jazz counterline]
+inputs:
+  required:
+    - cantus_firmus_or_melody
+    - number_of_voices
+  optional:
+    - harmonic_context
+    - species_constraint
+primitives:
+  required: []
+  optional: []
+parameters:
+  species: 1
+  dissonance_treatment: strict
+  suspension_preference: true
+style_constraints:
+  - Voices must be rhythmically and melodically independent.
+  - Dissonances must be prepared and resolved.
+  - Suspensions follow preparation–suspension–resolution.
+  - Avoid parallel fifths and octaves.
+decision_logic:
+  voice_leading: "Stepwise preference; leaps resolved by step in opposite direction."
+  dissonance: "Dissonances on weak beats; preparation on strong beat."
+  suspension: "Prepare suspension with same pitch; resolve down by step."
+outputs:
+  type: contrapuntal_material
+  produces: [counterpoint, voice_leading, suspension_chain]
+evaluation:
+  success_conditions:
+    - Voices are independent.
+    - Dissonances prepared and resolved.
+    - No parallel fifths/octaves.
+  failure_conditions:
+    - Parallel fifths or octaves.
+    - Unprepared dissonance.
+    - Voice crossing that obscures independence.
+test_prompts:
+  - "Generate 2-voice counterpoint above given melody."
+  - "Add suspension chain to 2-voice texture."
+dependencies:
+  knowledge_sources: [gml-codex]
+  related_engines: []
+  pending_primitives:
+    - suspension_chain
+    - voice_independence
+    - dissonance_preparation
+    - species_counterpoint
+tags: [Bach, counterpoint, classical, voice leading]

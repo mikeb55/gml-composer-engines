@@ -1,0 +1,54 @@
+id: andrew_hill_engine
+name: Andrew Hill Engine
+category: composer
+version: 0.1.0
+status: experimental
+purpose: Generate intervallic harmony and asymmetric phrase logic with non-functional harmonic motion.
+musical_scope:
+  domains: [harmony, phrase structure, melody]
+  typical_contexts: [post-bop, avant-garde jazz, non-functional harmony]
+inputs:
+  required:
+    - harmonic_context
+    - seed_material
+  optional:
+    - phrase_length
+    - intervallic_preference
+primitives:
+  required:
+    - phrase_asymmetry
+    - delay_resolution
+    - motif_fragment
+  optional: []
+parameters:
+  phrase_asymmetry_bias: 0.8
+  delay_resolution_bias: 0.7
+  intervallic_preference: [3, 4, 6]
+style_constraints:
+  - Prefer intervallic motion over scalar.
+  - Non-functional harmonic progression (avoid ii–V–I logic).
+  - Strong phrase asymmetry.
+  - Delay or obscure resolution.
+decision_logic:
+  harmony: "Select chord movement by interval (3rds, 4ths) rather than function."
+  phrase: "Apply phrase_asymmetry with bias 0.8; irregular groupings."
+  development: "Use motif_fragment for melodic variation; avoid literal sequence."
+outputs:
+  type: harmonic_and_melodic_material
+  produces: [harmony, melody, phrase_structure]
+evaluation:
+  success_conditions:
+    - Phrase structure is asymmetric.
+    - Harmonic motion is intervallic or non-functional.
+    - At least one resolution delayed or obscured.
+  failure_conditions:
+    - Strict ii–V–I functional harmony throughout.
+    - Square phrasing.
+    - Purely scalar melody.
+test_prompts:
+  - "Generate 8-bar harmony with intervallic motion; asymmetric phrases."
+  - "Develop seed motif with fragment; avoid functional cadences."
+dependencies:
+  knowledge_sources: [gml-codex]
+  related_engines: [wayne_shorter_engine]
+tags: [Andrew Hill, jazz, harmony, intervallic]

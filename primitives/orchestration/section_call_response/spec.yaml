@@ -1,0 +1,49 @@
+id: section_call_response
+name: Section Call Response
+category: orchestration
+version: 0.1.0
+status: experimental
+purpose: Alternate material between ensemble groups for dialogue and momentum.
+inputs:
+  required:
+    - material_a
+    - material_b
+    - section_spec
+  optional:
+    - ensemble_groups
+    - alternation_pattern
+parameters:
+  section_spec:
+    description: Defines call/response groups and pattern
+    type: object
+    properties:
+      call_group: brass
+      response_group: reeds
+      pattern: alternating
+      overlap: false
+  alternation_pattern:
+    description: Bar-level or phrase-level alternation
+    type: array
+    default: [call, response, call, response]
+rules:
+  - Call and response groups must be distinct.
+  - Material must be assignable to each group.
+  - Overlap (simultaneous call and response) is optional for shout choruses.
+procedure:
+  - Parse alternation_pattern or derive from section_spec.
+  - Assign material_a to call_group, material_b to response_group.
+  - Output timeline: which group plays when.
+outputs:
+  type: section_timeline
+  guarantees:
+    - Call and response alternate (or overlap) as specified.
+    - No unassigned material in pattern.
+evaluation:
+  success_conditions:
+    - Dialogue is audible and follows pattern.
+    - Groups are distinct.
+  failure_conditions:
+    - Same group plays both call and response simultaneously without overlap intent.
+    - Pattern violates section_spec.
+dependencies: []
+tags: [orchestration, dialogue, big band, Ellington]

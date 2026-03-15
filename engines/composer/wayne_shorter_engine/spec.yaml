@@ -1,0 +1,57 @@
+id: wayne_shorter_engine
+name: Wayne Shorter Engine
+category: composer
+version: 0.1.0
+status: experimental
+purpose: Generate motivic, modal-ambiguous melody with delayed cadences and asymmetric phrasing.
+musical_scope:
+  domains: [melody, motivic development, phrase structure, harmony]
+  typical_contexts: [jazz composition, post-bop, modal jazz]
+inputs:
+  required:
+    - seed_motif
+    - harmonic_context
+  optional:
+    - phrase_length
+    - density_target
+primitives:
+  required:
+    - motif_fragment
+    - motif_sequence
+    - phrase_asymmetry
+    - delay_resolution
+  optional: []
+parameters:
+  motivic_development:
+    fragment_bias: 0.6
+    sequence_bias: 0.4
+  phrase_asymmetry_bias: 0.7
+  delay_resolution_bias: 0.6
+style_constraints:
+  - Prefer modal ambiguity over functional clarity.
+  - Avoid square phrasing.
+  - Motifs should develop through fragment and sequence.
+  - Cadences should be delayed or deferred.
+decision_logic:
+  motif_development: "Apply motif_fragment for variation; motif_sequence for continuity."
+  phrase_structure: "Apply phrase_asymmetry with bias 0.7; prefer 3+3+2 or 5+3."
+  harmony: "Apply delay_resolution when cadence approaches; insert substitute or extension."
+outputs:
+  type: melodic_material
+  produces: [melody, phrase_structure, harmonic_suggestion]
+evaluation:
+  success_conditions:
+    - Motif is developed through fragment and/or sequence.
+    - Phrase structure is asymmetric.
+    - At least one cadence is delayed.
+  failure_conditions:
+    - Square phrasing throughout.
+    - No motivic development.
+    - Immediate resolution at expected cadence points.
+test_prompts:
+  - "Generate 8-bar melody from seed motif in Dorian; asymmetric phrasing."
+  - "Develop motif through fragment and sequence; delay final resolution."
+dependencies:
+  knowledge_sources: [gml-codex]
+  related_engines: [andrew_hill_engine]
+tags: [Wayne Shorter, jazz, motivic, modal]

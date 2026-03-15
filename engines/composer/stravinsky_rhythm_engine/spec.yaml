@@ -1,0 +1,54 @@
+id: stravinsky_rhythm_engine
+name: Stravinsky Rhythm Engine
+category: composer
+version: 0.1.0
+status: experimental
+purpose: Generate accent displacement, block rhythm, and metric tension.
+musical_scope:
+  domains: [rhythm, accent, metre]
+  typical_contexts: [contemporary classical, jazz rhythm, metric modulation]
+inputs:
+  required:
+    - rhythmic_material
+    - metre
+  optional:
+    - block_duration
+    - displacement_pattern
+primitives:
+  required:
+    - accent_displacement
+  optional: []
+parameters:
+  displacement_strength: 0.7
+  block_rhythm_bias: 0.6
+  metric_tension: high
+style_constraints:
+  - Accents displaced from strong beats.
+  - Block-like rhythmic units (repeated cells).
+  - Metric tension: implied beat vs. accent conflict.
+decision_logic:
+  accent: "Apply accent_displacement with strength 0.7; shift to offbeats or displaced subdivisions."
+  block: "Group attacks into 2–4 note cells; repeat or vary."
+  tension: "Maintain clear metre while accents contradict it."
+outputs:
+  type: rhythmic_material
+  produces: [accent_map, rhythmic_cells, metric_tension]
+evaluation:
+  success_conditions:
+    - Accents displaced from strong beats.
+    - Block-like rhythmic character.
+    - Metric tension audible.
+  failure_conditions:
+    - Accents on strong beats throughout.
+    - No block structure.
+    - Metre unclear or lost.
+test_prompts:
+  - "Generate 4-bar rhythm with displaced accents; block character."
+  - "Apply Stravinsky-style accent displacement to given material."
+dependencies:
+  knowledge_sources: [gml-codex]
+  related_engines: []
+  pending_primitives:
+    - block_rhythm
+    - metric_cell
+tags: [Stravinsky, rhythm, accent, contemporary]

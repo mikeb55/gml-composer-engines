@@ -1,0 +1,46 @@
+id: register_layer
+name: Register Layer
+category: orchestration
+version: 0.1.0
+status: experimental
+purpose: Assign material across pitch bands for clarity and colour.
+inputs:
+  required:
+    - material
+    - layer_spec
+  optional:
+    - ensemble_spec
+    - existing_occupancy
+parameters:
+  layer_spec:
+    description: Defines pitch bands and assignment
+    type: object
+    properties:
+      bands: []
+      assignment: {}
+      overlap_allowed: false
+  bands:
+    description: Pitch ranges (e.g. low, mid, high)
+    default: [{ name: low, min: C2, max: G3 }, { name: mid, min: G3, max: C5 }, { name: high, min: C5, max: C7 }]
+rules:
+  - Material must be assigned to at least one band.
+  - Overlap between bands is optional; default is no overlap for clarity.
+  - Assignment should respect ensemble_spec (which instruments occupy which registers).
+procedure:
+  - Parse material into pitch content.
+  - Map material to bands per layer_spec.
+  - Output assignment: which material goes to which register/voice.
+outputs:
+  type: register_assignment
+  guarantees:
+    - Each assigned element has a valid register.
+    - No unassigned material when full coverage is required.
+evaluation:
+  success_conditions:
+    - Material is distributed across bands as specified.
+    - Tessitura is appropriate for assigned instruments.
+  failure_conditions:
+    - Material outside assigned band range.
+    - Impossible tessitura for instrument.
+dependencies: []
+tags: [orchestration, register, big band, arranging]
