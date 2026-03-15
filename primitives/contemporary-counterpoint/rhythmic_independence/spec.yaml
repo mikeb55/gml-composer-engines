@@ -1,0 +1,35 @@
+id: rhythmic_independence
+name: Rhythmic Independence
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Allows voices to maintain distinct rhythmic identities rather than moving in lockstep.
+summary: Allows voices to maintain distinct rhythmic identities rather than moving in lockstep.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - rhythmic_offset_bias
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Voices have distinct rhythmic profiles
+    - No lockstep motion
+rules:
+  - Avoid identical attack patterns between voices
+  - Allow staggered entrances and offsets
+  - Rhythmic profiles should differ
+evaluation:
+  success_conditions:
+    - Rhythmic profiles differ
+    - No prolonged lockstep
+  failure_conditions:
+    - Voices move in lockstep
+    - Identical rhythmic profiles
+dependencies: []
+tags: [contemporary-counterpoint, rhythm, independence]

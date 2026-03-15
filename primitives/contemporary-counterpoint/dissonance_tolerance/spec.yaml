@@ -1,0 +1,35 @@
+id: dissonance_tolerance
+name: Dissonance Tolerance
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Controls acceptable non-classical vertical dissonance levels in modern contrapuntal textures.
+summary: Controls acceptable non-classical vertical dissonance levels in modern contrapuntal textures.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - dissonance_level
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Dissonance within declared tolerance
+    - Vertical intervals controlled
+rules:
+  - Dissonance level 0–1 controls acceptable vertical tension
+  - Higher levels allow more seconds, sevenths, tritones
+  - Lower levels favour consonance
+evaluation:
+  success_conditions:
+    - Dissonance within tolerance
+    - No unintended collapse
+  failure_conditions:
+    - Dissonance exceeds declared level
+    - Texture collapses from excessive tension
+dependencies: []
+tags: [contemporary-counterpoint, dissonance, harmony]

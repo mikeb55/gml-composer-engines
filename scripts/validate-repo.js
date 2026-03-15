@@ -161,6 +161,12 @@ const PRIMITIVE_SPEC_PATHS = [
   'primitives/sectional-orchestration/brass_reed_contrast/spec.yaml',
   'primitives/sectional-orchestration/background_figure/spec.yaml',
   'primitives/sectional-orchestration/density_orchestration_map/spec.yaml',
+  'primitives/contemporary-counterpoint/line_handoff/spec.yaml',
+  'primitives/contemporary-counterpoint/rhythmic_independence/spec.yaml',
+  'primitives/contemporary-counterpoint/register_interlock/spec.yaml',
+  'primitives/contemporary-counterpoint/dissonance_tolerance/spec.yaml',
+  'primitives/contemporary-counterpoint/intervallic_cell_counterpoint/spec.yaml',
+  'primitives/contemporary-counterpoint/phrase_overlap/spec.yaml',
 ];
 
 const ENGINE_SPEC_PATHS = [
@@ -171,6 +177,7 @@ const ENGINE_SPEC_PATHS = [
   'engines/composer/ellington_orchestration_engine/spec.yaml',
   'engines/composer/stravinsky_rhythm_engine/spec.yaml',
   'engines/guitar/jimmy_wyble_engine/spec.yaml',
+  'engines/contemporary_counterpoint_engine/spec.yaml',
 ];
 
 for (const p of PRIMITIVE_SPEC_PATHS) {
@@ -289,6 +296,12 @@ const PRIMITIVE_DIRS = [
   'primitives/sectional-orchestration/brass_reed_contrast',
   'primitives/sectional-orchestration/background_figure',
   'primitives/sectional-orchestration/density_orchestration_map',
+  'primitives/contemporary-counterpoint/line_handoff',
+  'primitives/contemporary-counterpoint/rhythmic_independence',
+  'primitives/contemporary-counterpoint/register_interlock',
+  'primitives/contemporary-counterpoint/dissonance_tolerance',
+  'primitives/contemporary-counterpoint/intervallic_cell_counterpoint',
+  'primitives/contemporary-counterpoint/phrase_overlap',
 ];
 
 const ENGINE_DIRS = [
@@ -299,6 +312,7 @@ const ENGINE_DIRS = [
   'engines/composer/ellington_orchestration_engine',
   'engines/composer/stravinsky_rhythm_engine',
   'engines/guitar/jimmy_wyble_engine',
+  'engines/contemporary_counterpoint_engine',
 ];
 
 for (const dir of [...PRIMITIVE_DIRS, ...ENGINE_DIRS]) {

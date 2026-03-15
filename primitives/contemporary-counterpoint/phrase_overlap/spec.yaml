@@ -1,0 +1,35 @@
+id: phrase_overlap
+name: Phrase Overlap
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Allows one line to begin or continue across phrase boundaries while another resolves or yields.
+summary: Allows one line to begin or continue across phrase boundaries while another resolves or yields.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - overlap_tolerance
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Phrase boundaries may overlap
+    - At least one voice active across boundary
+rules:
+  - One line may continue while another resolves
+  - Overlap tolerance controls how much overlap allowed
+  - Avoid all voices resolving simultaneously
+evaluation:
+  success_conditions:
+    - Overlap occurs without collapse
+    - Continuity preserved
+  failure_conditions:
+    - All voices resolve at same moment
+    - Texture collapse at boundary
+dependencies: []
+tags: [contemporary-counterpoint, phrase, overlap]

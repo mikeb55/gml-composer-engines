@@ -1,0 +1,36 @@
+id: line_handoff
+name: Line Handoff
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Transfers melodic responsibility from one line to another without breaking continuity.
+summary: Transfers melodic responsibility from one line to another without breaking continuity.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - handoff_point
+    - continuity_constraint
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Melodic continuity preserved across handoff
+    - No abrupt breaks in texture
+rules:
+  - One line may yield melodic lead to another
+  - Handoff must preserve continuity
+  - Avoid simultaneous handoff in all voices
+evaluation:
+  success_conditions:
+    - Handoff is smooth
+    - No texture collapse
+  failure_conditions:
+    - Abrupt break in continuity
+    - All voices silent at handoff
+dependencies: []
+tags: [contemporary-counterpoint, handoff, line-transfer]

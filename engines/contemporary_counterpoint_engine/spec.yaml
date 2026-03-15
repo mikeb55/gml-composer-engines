@@ -1,0 +1,77 @@
+id: contemporary_counterpoint_engine
+name: Contemporary Counterpoint Engine
+category: composer-engine
+version: 0.1.0
+status: experimental
+purpose: Generate modern contrapuntal textures where harmony emerges from interacting lines rather than block chords.
+musical_scope:
+  domains: [contemporary counterpoint, modern jazz, chamber writing, horn-section inner voices]
+  typical_contexts: [guitar duos, chamber ensembles, big-band inner voices, contemporary classical]
+inputs:
+  required:
+    - harmonic_context
+    - line_count
+  optional:
+    - intervallic_seed
+    - phrase_length
+    - density_profile
+    - register_plan
+primitives:
+  required:
+    - voice_independence
+    - contrary_motion
+    - oblique_motion
+    - parallel_avoidance
+    - line_handoff
+    - rhythmic_independence
+    - register_interlock
+    - dissonance_tolerance
+    - intervallic_cell_counterpoint
+    - phrase_overlap
+  optional:
+    - suspension_chain
+parameters:
+  line_count: 2
+  rhythmic_offset_bias: 0.6
+  dissonance_level: 0.5
+  intervallic_cell_bias: 0.5
+  overlap_tolerance: 0.5
+  register_separation_strength: 0.6
+  contrary_motion_bias: 0.6
+  independence_bias: 0.8
+generation_pipeline:
+  1_harmonic_or_intervallic_seed: "Establish harmonic context or intervallic seed. If harmonic_context provided, derive scale/chord tones. intervallic_seed defines cell set for intervallic_cell_counterpoint."
+  2_line_count_and_register: "Set line_count (2–4). Apply register_interlock and register_separation_strength. Assign complementary registers so texture remains clear when lines cross."
+  3_voice_independence_and_motion: "Generate lines using voice_independence, contrary_motion, oblique_motion, parallel_avoidance. Apply independence_bias and contrary_motion_bias."
+  4_rhythmic_independence: "Apply rhythmic_independence. rhythmic_offset_bias controls how distinct rhythmic profiles are. Voices maintain distinct identities rather than lockstep."
+  5_dissonance_and_cells: "Apply dissonance_tolerance (dissonance_level) and intervallic_cell_counterpoint (intervallic_cell_bias). Harmony emerges from line interaction; cells recur and transform."
+  6_line_handoff_and_phrase_overlap: "Apply line_handoff and phrase_overlap. overlap_tolerance controls phrase boundary overlap. One line may continue while another resolves."
+parameter_descriptions:
+  line_count: "Number of voices (2–4). Default 2."
+  rhythmic_offset_bias: "Strength of rhythmic independence. 0 = lockstep; 1 = strongly distinct profiles."
+  dissonance_level: "Acceptable vertical dissonance. 0 = consonance-focused; 1 = liberal dissonance."
+  intervallic_cell_bias: "Balance between chord-tone and cell-driven logic. 0 = chord-tone; 1 = cell-driven."
+  overlap_tolerance: "How much phrase overlap allowed. 0 = strict boundaries; 1 = fluid overlap."
+  register_separation_strength: "Register clarity. 0 = crossing allowed; 1 = strict separation."
+style_constraints:
+  - 2–4 voices by default
+  - Harmony emerges from line interaction, not block chords
+  - Rhythmic profiles must differ between voices
+  - Registers complementary; crossing allowed when texture remains clear
+  - Dissonance within declared tolerance
+  - Phrase overlap allowed; avoid all voices resolving simultaneously
+outputs:
+  type: contemporary_contrapuntal_material
+  produces: [lines, implied_harmony, rhythmic_profiles, register_map, handoff_points]
+evaluation:
+  success_conditions:
+    - Lines are melodically independent
+    - Rhythmic profiles differ
+    - Registers usable
+    - Dissonance within tolerance
+    - Handoff/overlap without collapse
+  failure_conditions:
+    - Lines identical or lockstep
+    - Texture collapse
+    - Dissonance exceeds tolerance
+tags: [contemporary-counterpoint, modern-jazz, chamber, horn-section]

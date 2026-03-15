@@ -1,0 +1,36 @@
+id: intervallic_cell_counterpoint
+name: Intervallic Cell Counterpoint
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Builds contrapuntal interaction from recurring intervallic cells instead of only chord-tone logic.
+summary: Builds contrapuntal interaction from recurring intervallic cells instead of only chord-tone logic.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - intervallic_cell_bias
+    - cell_seed
+parameters: {}
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Recurring intervallic cells drive counterpoint
+    - Chord-tone logic optional
+rules:
+  - Cells (e.g. M2, m3, P4) recur and transform
+  - Harmony can emerge from cell interaction
+  - Intervallic cell bias controls cell vs chord-tone balance
+evaluation:
+  success_conditions:
+    - Cells recur meaningfully
+    - Counterpoint coherent
+  failure_conditions:
+    - Random intervals, no cell logic
+    - Purely chordal, no cell structure
+dependencies: []
+tags: [contemporary-counterpoint, intervallic, cell, motif]

@@ -1,0 +1,35 @@
+id: register_interlock
+name: Register Interlock
+family: contemporary-counterpoint
+type: primitive
+domain: counterpoint
+category: contemporary-counterpoint
+version: 0.1.0
+status: experimental
+purpose: Lets voices occupy complementary registers so texture remains clear even when lines cross or overlap.
+summary: Lets voices occupy complementary registers so texture remains clear even when lines cross or overlap.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - register_separation_strength
+parameters: {}
+outputs:
+  type: register_assignment
+  guarantees:
+    - Voices occupy complementary registers
+    - Texture remains clear when crossing
+rules:
+  - Assign voices to complementary zones
+  - Crossing allowed when texture remains clear
+  - Avoid prolonged identical register
+evaluation:
+  success_conditions:
+    - Complementary register assignment
+    - Clear texture when crossing
+  failure_conditions:
+    - Prolonged register overlap
+    - Muddy texture from crossing
+dependencies: []
+tags: [contemporary-counterpoint, register, interlock]
