@@ -1,0 +1,58 @@
+id: conflict_resolution
+name: Conflict Resolution
+category: interaction
+version: 0.1.0
+status: experimental
+purpose: Resolve collisions between simultaneous engine outputs according to declared rules.
+inputs:
+  required:
+    - conflicting_outputs
+    - resolution_spec
+  optional:
+    - layer_priority
+    - context
+parameters:
+  resolution_spec:
+    description: Defines resolution strategy
+    type: object
+    properties:
+      strategy: suppress_lower
+      merge_allowed: false
+      defer_to: null
+  strategy:
+    description: suppress_lower, merge, defer, or split
+    type: string
+    default: suppress_lower
+  merge_allowed:
+    description: If true, attempt to merge compatible outputs
+    type: boolean
+    default: false
+  defer_to:
+    description: Engine ID to defer to when strategy is defer
+    type: string
+rules:
+  - suppress_lower: Lower-priority output is suppressed (or reduced).
+  - merge: When merge_allowed, combine outputs if compatible (e.g. different registers).
+  - defer: Yield to specified engine; others suppressed.
+  - split: Divide space (e.g. by register, by beat) between outputs.
+  - Resolution must produce single coherent result; no unresolved collisions.
+procedure:
+  - Receive conflicting outputs and resolution_spec.
+  - Apply strategy (suppress, merge, defer, split).
+  - Verify no remaining conflict.
+  - Output resolved result with provenance.
+outputs:
+  type: resolved_output
+  guarantees:
+    - Single coherent output for contested space.
+    - Strategy applied consistently.
+    - Provenance to source outputs retained.
+evaluation:
+  success_conditions:
+    - No unresolved conflict.
+    - Output is musically coherent.
+  failure_conditions:
+    - Both outputs fully present when strategy is suppress_lower.
+    - Merge produces invalid result (e.g. overlapping pitches).
+dependencies: []
+tags: [interaction, conflict, conductor, resolution]

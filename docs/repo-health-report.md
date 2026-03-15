@@ -126,7 +126,7 @@ Primitives: motif_fragment, motif_sequence, phrase_asymmetry, delay_resolution, 
 
 No stale references found in content:
 
-- `-gml-composer-engines` — not present in docs
+- Hyphenated repo name variant — not present in docs
 - Old repo URL — not present
 - `scripts/validate-repo.js` contains the check logic (intentional)
 

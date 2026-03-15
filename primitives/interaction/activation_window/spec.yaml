@@ -1,0 +1,58 @@
+id: activation_window
+name: Activation Window
+category: interaction
+version: 0.1.0
+status: experimental
+purpose: Define when an engine or layer is active within a section, phrase, or formal span.
+inputs:
+  required:
+    - engine_id
+    - window_spec
+  optional:
+    - formal_context
+    - overlap_rules
+parameters:
+  window_spec:
+    description: Defines active span
+    type: object
+    properties:
+      start_bar: 0
+      end_bar: null
+      start_beat: 0
+      end_beat: null
+      phrase_relative: false
+  start_bar:
+    description: Bar index (0-based) for window start
+    type: integer
+  end_bar:
+    description: Bar index for window end (exclusive)
+    type: integer
+  phrase_relative:
+    description: If true, bars relative to phrase start
+    type: boolean
+    default: false
+rules:
+  - Engine is active only within [start_bar, end_bar) (or equivalent beat range).
+  - Outside window, engine does not produce output for that span.
+  - Overlap with other engines' windows governed by overlap_rules when provided.
+  - phrase_relative windows apply per phrase when formal context has phrase boundaries.
+procedure:
+  - Parse formal context (section, phrase boundaries).
+  - Resolve window_spec to absolute bar/beat range.
+  - Output activation event: engine_id active for [start, end).
+  - Conductor uses this to schedule engine invocations.
+outputs:
+  type: activation_event
+  guarantees:
+    - Window boundaries are well-defined.
+    - Engine invoked only within window.
+    - Provenance to formal context.
+evaluation:
+  success_conditions:
+    - Window resolves to valid range.
+    - No engine output outside its window.
+  failure_conditions:
+    - start_bar >= end_bar.
+    - Window exceeds formal span.
+dependencies: []
+tags: [interaction, activation, conductor, scheduling]

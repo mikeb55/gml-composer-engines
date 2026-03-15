@@ -10,7 +10,7 @@ The Conductor Engine is not a style engine. It does not generate melody, harmony
 - **Layering** — How outputs from multiple engines combine (melody over harmony, counterpoint over bass).
 - **Formal logic** — Section boundaries, repeats, transitions.
 - **Density** — Controlling activity level across the ensemble.
-- **Interaction** — How engines influence each other (e.g. harmony engine informs orchestration engine).
+- **Interaction** — How engines influence each other (e.g. harmony engine informs orchestration engine). Conductor coordination depends on interaction primitives: handoff (transfer material between engines), activation_window (when each engine is active), layer_priority (which layer has precedence), and conflict_resolution (how to resolve collisions between simultaneous outputs).
 - **Handoff** — Passing material between engines (e.g. melody engine output becomes counterpoint engine input).
 
 ## Example Stack

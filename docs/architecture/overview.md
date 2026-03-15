@@ -6,7 +6,7 @@
 Primitives → Engines → Conductor → Generated music
 ```
 
-**Primitives** are atomic musical operations: motif extraction, phrase asymmetry, delay resolution, accent displacement, register layering, section dialogue, voicing spread. Each primitive has defined inputs, parameters, rules, and outputs.
+**Primitives** are atomic musical operations: motif extraction, phrase asymmetry, delay resolution, accent displacement, register layering, section dialogue, voicing spread. Transformation primitives (fragment, transposition, rotation, interval_map) provide reusable variation logic. Interaction primitives (handoff, layer_priority, activation_window, conflict_resolution) govern engine coordination. Each primitive has defined inputs, parameters, rules, and outputs.
 
 **Engines** combine primitives into coherent style-specific behaviour. A Wayne Shorter engine uses motif_fragment, motif_sequence, phrase_asymmetry, delay_resolution. An Ellington orchestration engine uses register_layer, section_call_response, voicing_spread.
 
@@ -24,6 +24,6 @@ Primitives → Engines → Conductor → Generated music
 
 ## Separation of Concerns
 
-- Primitives: no style knowledge; pure transformation.
+- Primitives: no style knowledge; pure transformation. Transformation and interaction primitives are foundational layers beneath engines and conductor behaviour.
 - Engines: style-specific; know when and how to apply primitives.
-- Conductor: no style; knows how to coordinate engines.
+- Conductor: no style; knows how to coordinate engines. Conductor coordination depends on interaction primitives such as handoff, activation windows, and conflict resolution.

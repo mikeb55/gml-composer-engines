@@ -40,6 +40,10 @@ Experimental design lab for the Conductor Engine Architecture (CEA) within the G
 - Beatrice relevance: motivic development, sectional dialogue, density growth.
 - Wayne Shorter, Ellington, Bach, Stravinsky as reference styles.
 
+## Primitive Layer
+
+The primitive layer includes: motivic, phrase, harmony, rhythm, orchestration, transform, and interaction. Transform primitives (fragment, transposition, rotation, interval_map) provide reusable variation logic. Interaction primitives (handoff, layer_priority, activation_window, conflict_resolution) govern how engines coordinate under the Conductor.
+
 ## Long-term Vision
 
 A Conductor Engine that assembles stacks of specialised engines (melody, harmony, counterpoint, rhythm, orchestration) into coherent compositions. Engines remain modular; style emerges from combination and parameterisation.

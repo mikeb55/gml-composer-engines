@@ -8,6 +8,6 @@ Markdown-based test scaffolding. This repo is not yet code-heavy; tests are spec
 
 **CI:** GitHub Actions runs validation on every push and pull request. See `.github/workflows/validate.yml`.
 
-**What these tests guarantee:** Correct folder structure, presence of required spec fields, terminology consistency, and coverage of notes/examples/tests for primitives and engines.
+**What these tests guarantee:** Correct folder structure, presence of required spec fields, terminology consistency, and coverage of notes/examples/tests for primitives and engines. Validation includes transform and interaction primitive families.
 
 **What they do not guarantee:** Musical excellence, correct rule logic, or that outputs are playable. Those remain future evaluation goals.

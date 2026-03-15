@@ -1,0 +1,52 @@
+id: layer_priority
+name: Layer Priority
+category: interaction
+version: 0.1.0
+status: experimental
+purpose: Define which layer or engine has precedence when simultaneous outputs compete for space or salience.
+inputs:
+  required:
+    - layers
+    - priority_spec
+  optional:
+    - context
+    - salience_target
+parameters:
+  priority_spec:
+    description: Defines precedence order
+    type: object
+    properties:
+      order: []
+      tie_resolution: first
+  order:
+    description: Ordered list of layer IDs (first = highest priority)
+    type: array
+  tie_resolution:
+    description: first, last, or defer
+    type: string
+    default: first
+rules:
+  - When layers compete for same space (register, beat, voice), higher-priority layer wins.
+  - Tie_resolution applies when layers have equal declared priority.
+  - Salience (audibility, density) may be used to break ties when salience_target provided.
+  - Lower-priority layers may be suppressed, reduced, or deferred.
+procedure:
+  - Receive simultaneous layer outputs.
+  - Apply priority_spec to determine precedence.
+  - Resolve conflicts; output winning layer or merged result per rules.
+  - Output resolution event with provenance.
+outputs:
+  type: priority_resolution
+  guarantees:
+    - Single precedence order applied.
+    - Conflicts resolved per spec.
+    - Provenance to layers retained.
+evaluation:
+  success_conditions:
+    - Precedence applied consistently.
+    - No unresolved conflicts.
+  failure_conditions:
+    - Ambiguous precedence.
+    - Both layers fully suppressed when one should dominate.
+dependencies: []
+tags: [interaction, layer, priority, conductor, salience]

@@ -1,0 +1,51 @@
+id: transform_fragment
+name: Transform Fragment
+category: transform
+version: 0.1.0
+status: experimental
+purpose: Extract a musically meaningful subset from a source object while preserving identity.
+inputs:
+  required:
+    - source_object
+    - fragment_spec
+  optional:
+    - context
+    - identity_constraints
+parameters:
+  fragment_spec:
+    description: Defines extraction boundaries and criteria
+    type: object
+    properties:
+      start_index: 0
+      length: null
+      contour_preserve: true
+      boundary_type: beat
+  boundary_type:
+    description: beat, bar, event, or contour_segment
+    type: string
+    default: beat
+rules:
+  - Extracted fragment must retain recognisable identity relative to source.
+  - Fragment boundaries must align with musically sensible units (beat, bar, phrase).
+  - When contour_preserve is true, relative intervals within the fragment are preserved.
+  - Empty or degenerate fragments (single event with no contour) are invalid.
+procedure:
+  - Parse source_object (motif, cell, rhythm, interval set).
+  - Apply fragment_spec to determine start and extent.
+  - Extract subset; verify identity preservation.
+  - Output fragment with provenance reference to source.
+outputs:
+  type: fragment
+  guarantees:
+    - Output is a valid subset of source.
+    - Identity is traceable to source_object.
+    - Contour logic preserved when specified.
+evaluation:
+  success_conditions:
+    - Fragment is musically coherent.
+    - Source identity is recognisable in output.
+  failure_conditions:
+    - Fragment is empty or degenerate.
+    - Boundaries violate musical sense.
+dependencies: []
+tags: [transform, fragment, motif, cell, style-neutral]

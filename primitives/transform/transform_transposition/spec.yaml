@@ -1,0 +1,54 @@
+id: transform_transposition
+name: Transform Transposition
+category: transform
+version: 0.1.0
+status: experimental
+purpose: Restate a source object at a different pitch level or intervallic starting point while preserving contour logic as appropriate.
+inputs:
+  required:
+    - source_object
+    - transposition_spec
+  optional:
+    - target_tonality
+    - preserve_spelling
+parameters:
+  transposition_spec:
+    description: Defines transposition target
+    type: object
+    properties:
+      interval: 0
+      target_pitch: null
+      diatonic: false
+      contour_preserve: true
+  interval:
+    description: Semitone or diatonic step offset
+    type: integer
+  diatonic:
+    description: If true, transpose by scale degrees
+    type: boolean
+    default: false
+rules:
+  - Contour (direction and relative intervals) preserved when contour_preserve is true.
+  - Diatonic transposition respects target tonality when provided.
+  - Chromatic transposition preserves interval classes.
+  - Output remains within valid pitch range when constraints exist.
+procedure:
+  - Parse source_object.
+  - Apply transposition_spec (interval or target_pitch).
+  - Map each event; preserve contour when specified.
+  - Output transposed object with provenance.
+outputs:
+  type: transposed_object
+  guarantees:
+    - All events transposed consistently.
+    - Contour preserved when contour_preserve is true.
+    - Provenance to source retained.
+evaluation:
+  success_conditions:
+    - Transposition is consistent across all events.
+    - Contour matches source when specified.
+  failure_conditions:
+    - Inconsistent transposition (e.g. some events shifted, others not).
+    - Contour altered when contour_preserve is true.
+dependencies: []
+tags: [transform, transposition, pitch, contour, style-neutral]

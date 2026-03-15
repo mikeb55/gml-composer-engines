@@ -12,6 +12,10 @@
 
 **Style identity should not duplicate low-level mechanics.** Wayne Shorter and Andrew Hill both use phrase_asymmetry. Their engines differ in how they apply it, not in the primitive itself.
 
+**Style engines should not duplicate generic transformation logic.** Fragment, transposition, rotation, and interval mapping are primitives. Engines apply them; they do not reimplement them.
+
+**Conductor behaviour should not be hard-coded ad hoc when reusable interaction primitives can express the same logic.** Handoff, activation_window, layer_priority, and conflict_resolution exist to avoid scattered coordination code.
+
 ## Anti-patterns
 
 - Monolithic engines that encode everything.

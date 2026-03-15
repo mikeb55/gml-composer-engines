@@ -1,0 +1,58 @@
+id: handoff
+name: Handoff
+category: interaction
+version: 0.1.0
+status: experimental
+purpose: Transfer material or responsibility from one engine/layer/group to another without breaking continuity.
+inputs:
+  required:
+    - source_engine
+    - target_engine
+    - handoff_spec
+  optional:
+    - context
+    - continuity_constraints
+parameters:
+  handoff_spec:
+    description: Defines transfer parameters
+    type: object
+    properties:
+      material: null
+      overlap_bars: 0
+      transition_type: clean
+  material:
+    description: What is transferred (melody, harmony, texture, etc.)
+  overlap_bars:
+    description: Bars of overlap for crossfade or dovetail
+    type: integer
+    default: 0
+  transition_type:
+    description: clean, overlap, dovetail, or echo
+    type: string
+    default: clean
+rules:
+  - Handoff must not create audible gap or abrupt cut unless specified.
+  - Overlap must not exceed available bar range.
+  - Target engine must be capable of receiving specified material type.
+  - Continuity constraints (e.g. key, density) respected when provided.
+procedure:
+  - Identify source output and target input.
+  - Apply handoff_spec (clean cut, overlap, dovetail).
+  - Transfer material; verify continuity.
+  - Output handoff event with provenance.
+outputs:
+  type: handoff_event
+  guarantees:
+    - Material transferred as specified.
+    - No unintended gap or clash.
+    - Provenance to source and target engines.
+evaluation:
+  success_conditions:
+    - Transfer completes without break.
+    - Target receives valid input.
+  failure_conditions:
+    - Audible gap at handoff point.
+    - Material type mismatch.
+    - Overlap exceeds available range.
+dependencies: []
+tags: [interaction, handoff, conductor, continuity]

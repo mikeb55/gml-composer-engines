@@ -64,6 +64,16 @@ const REQUIRED_PATHS = [
   'primitives/orchestration/register_layer/spec.yaml',
   'primitives/orchestration/section_call_response/spec.yaml',
   'primitives/orchestration/voicing_spread/spec.yaml',
+  'primitives/transform/README.md',
+  'primitives/transform/transform_fragment/spec.yaml',
+  'primitives/transform/transform_transposition/spec.yaml',
+  'primitives/transform/transform_rotation/spec.yaml',
+  'primitives/transform/transform_interval_map/spec.yaml',
+  'primitives/interaction/README.md',
+  'primitives/interaction/handoff/spec.yaml',
+  'primitives/interaction/layer_priority/spec.yaml',
+  'primitives/interaction/activation_window/spec.yaml',
+  'primitives/interaction/conflict_resolution/spec.yaml',
   'engines/composer/wayne_shorter_engine/spec.yaml',
   'engines/composer/andrew_hill_engine/spec.yaml',
   'engines/composer/bach_counterpoint_engine/spec.yaml',
@@ -91,6 +101,14 @@ const PRIMITIVE_SPEC_PATHS = [
   'primitives/orchestration/register_layer/spec.yaml',
   'primitives/orchestration/section_call_response/spec.yaml',
   'primitives/orchestration/voicing_spread/spec.yaml',
+  'primitives/transform/transform_fragment/spec.yaml',
+  'primitives/transform/transform_transposition/spec.yaml',
+  'primitives/transform/transform_rotation/spec.yaml',
+  'primitives/transform/transform_interval_map/spec.yaml',
+  'primitives/interaction/handoff/spec.yaml',
+  'primitives/interaction/layer_priority/spec.yaml',
+  'primitives/interaction/activation_window/spec.yaml',
+  'primitives/interaction/conflict_resolution/spec.yaml',
 ];
 
 const ENGINE_SPEC_PATHS = [
@@ -196,6 +214,14 @@ const PRIMITIVE_DIRS = [
   'primitives/orchestration/register_layer',
   'primitives/orchestration/section_call_response',
   'primitives/orchestration/voicing_spread',
+  'primitives/transform/transform_fragment',
+  'primitives/transform/transform_transposition',
+  'primitives/transform/transform_rotation',
+  'primitives/transform/transform_interval_map',
+  'primitives/interaction/handoff',
+  'primitives/interaction/layer_priority',
+  'primitives/interaction/activation_window',
+  'primitives/interaction/conflict_resolution',
 ];
 
 const ENGINE_DIRS = [

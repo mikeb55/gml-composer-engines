@@ -1,0 +1,57 @@
+id: transform_rotation
+name: Transform Rotation
+category: transform
+version: 0.1.0
+status: experimental
+purpose: Reorder a source object by cyclical rotation to create variation without full replacement.
+inputs:
+  required:
+    - source_object
+    - rotation_spec
+  optional:
+    - axis
+    - preserve_identity
+parameters:
+  rotation_spec:
+    description: Defines rotation parameters
+    type: object
+    properties:
+      offset: 0
+      direction: forward
+      unit: event
+  offset:
+    description: Number of units to rotate
+    type: integer
+  direction:
+    description: forward or backward
+    type: string
+    default: forward
+  unit:
+    description: event, beat, bar, or contour_segment
+    type: string
+    default: event
+rules:
+  - Rotation is cyclical: last element becomes first (forward) or first becomes last (backward).
+  - All events retained; order changes only.
+  - Unit must match object structure (e.g. beat for rhythm, event for melody).
+  - Empty or single-element objects are unchanged.
+procedure:
+  - Parse source_object.
+  - Determine rotation offset and direction.
+  - Apply cyclical shift by specified units.
+  - Output rotated object with provenance.
+outputs:
+  type: rotated_object
+  guarantees:
+    - All source events present in output.
+    - Order reflects cyclical rotation.
+    - Provenance to source retained.
+evaluation:
+  success_conditions:
+    - Rotation is consistent and cyclical.
+    - No events lost or duplicated.
+  failure_conditions:
+    - Events missing or duplicated.
+    - Rotation applied incorrectly (e.g. non-cyclical).
+dependencies: []
+tags: [transform, rotation, variation, cyclical, style-neutral]

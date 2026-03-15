@@ -19,6 +19,7 @@ Automated by `scripts/validate-repo.js`. Checks:
 - Conductor identity: "not a style engine" stated
 - Examples: engine-stack-examples has ≥3 stacks; beatrice-big-band-stack has required phrases
 - Every primitive/engine with spec.yaml has notes.md, examples/example-01.md, tests/test-spec.md
+- Transform primitives (transform_fragment, transform_transposition, transform_rotation, transform_interval_map) and interaction primitives (handoff, layer_priority, activation_window, conflict_resolution) are included in validation. Future validation should check transform and interaction coverage as the repo grows.
 
 ## Spec Completeness Validation
 

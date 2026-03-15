@@ -1,0 +1,54 @@
+id: transform_interval_map
+name: Transform Interval Map
+category: transform
+version: 0.1.0
+status: experimental
+purpose: Map a source object through a defined interval rule or interval profile.
+inputs:
+  required:
+    - source_object
+    - interval_profile
+  optional:
+    - anchor_pitch
+    - preserve_contour
+    - modulo_octave
+parameters:
+  interval_profile:
+    description: Ordered list of intervals (semitones) to apply
+    type: array
+  anchor_pitch:
+    description: Starting pitch for mapping
+    type: pitch
+  preserve_contour:
+    description: If true, apply profile to contour direction only
+    type: boolean
+    default: false
+  modulo_octave:
+    description: Reduce intervals mod 12 for pitch-class mapping
+    type: boolean
+    default: false
+rules:
+  - Interval profile length may match source length or repeat/truncate as defined.
+  - When anchor_pitch given, first event maps to anchor; subsequent events follow profile.
+  - Modulo_octave yields pitch-class equivalent mapping when true.
+  - Preserve_contour applies profile in direction of each step (up/down).
+procedure:
+  - Parse source_object and extract interval succession.
+  - Apply interval_profile (direct or contour-relative).
+  - Map to output pitches; apply anchor if specified.
+  - Output mapped object with provenance.
+outputs:
+  type: mapped_object
+  guarantees:
+    - Output reflects interval_profile application.
+    - Anchor respected when provided.
+    - Provenance to source retained.
+evaluation:
+  success_conditions:
+    - Mapping is consistent with profile.
+    - Output is musically coherent.
+  failure_conditions:
+    - Profile applied inconsistently.
+    - Anchor ignored when specified.
+dependencies: []
+tags: [transform, interval, mapping, pitch-class, style-neutral]
