@@ -1,0 +1,35 @@
+id: dyad_density_control
+name: Dyad Density Control
+category: guitar
+version: 0.1.0
+status: experimental
+purpose: Controls how frequently both voices sound simultaneously.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - density_profile
+    - structural_moments
+parameters:
+  default_pattern: line_dyad_line_dyad
+  dyad_emphasis_at_cadence: true
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Texture alternates between single-line and dyads
+    - No continuous double-stop writing
+rules:
+  - Texture should alternate between single-line motion and dyads
+  - Avoid continuous double-stop writing
+  - Allow dyadic emphasis at structural moments
+  - Default pattern: line → dyad → line → dyad
+evaluation:
+  success_conditions:
+    - Alternation present
+    - Dyads at structural moments when specified
+  failure_conditions:
+    - Continuous double-stops throughout
+    - No dyadic moments when required
+dependencies: []
+tags: [guitar, dyad, texture, two-line, Wyble]

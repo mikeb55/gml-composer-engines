@@ -1,0 +1,35 @@
+id: string_set_preference
+name: String Set Preference
+category: guitar
+version: 0.1.0
+status: experimental
+purpose: Encourages efficient string grouping for two-line guitar writing.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - string_pair
+    - ergonomic_mode
+parameters:
+  adjacency_preference: 0.8
+  skip_penalty: 0.5
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Favours adjacent or near-adjacent string pairs
+    - Maintains ergonomic picking patterns
+rules:
+  - Favour adjacent or near-adjacent string pairs
+  - Avoid frequent large string skips
+  - Maintain ergonomic picking patterns
+  - Allow alternate string sets when musical motion requires it
+evaluation:
+  success_conditions:
+    - String pairs mostly adjacent or near-adjacent
+    - Picking patterns ergonomic
+  failure_conditions:
+    - Frequent large string skips
+    - Awkward picking patterns
+dependencies: []
+tags: [guitar, string set, ergonomics, two-line, Wyble]

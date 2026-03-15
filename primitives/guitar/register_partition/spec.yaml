@@ -1,0 +1,35 @@
+id: register_partition
+name: Register Partition
+category: guitar
+version: 0.1.0
+status: experimental
+purpose: Defines register zones for independent voices on guitar so contrapuntal lines remain clear and playable.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - upper_range
+    - lower_range
+    - crossing_tolerance
+parameters:
+  upper_range: [E4, C6]
+  lower_range: [E2, B3]
+outputs:
+  type: register_assignment
+  guarantees:
+    - Upper and lower voices assigned to distinct zones
+    - Momentary crossing allowed within tolerance
+rules:
+  - Upper voice typically E4–C6
+  - Lower voice typically E2–B3
+  - Momentary crossing allowed
+  - Avoid both voices occupying identical register for long periods
+evaluation:
+  success_conditions:
+    - Voices assigned to appropriate zones
+    - No prolonged register overlap
+  failure_conditions:
+    - Both voices in same register for extended period
+dependencies: []
+tags: [guitar, register, two-line, Wyble]

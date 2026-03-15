@@ -1,0 +1,35 @@
+id: playability_constraint
+name: Playability Constraint
+category: guitar
+version: 0.1.0
+status: experimental
+purpose: Ensures generated line combinations remain playable on guitar.
+inputs:
+  required:
+    - voices
+    - context
+  optional:
+    - max_stretch
+    - position_preference
+parameters:
+  max_stretch: 5
+  position_preference: true
+outputs:
+  type: contrapuntal_material
+  guarantees:
+    - Intervals within playable hand span
+    - Movement favours adjacent strings where possible
+rules:
+  - Avoid intervals requiring impossible stretches
+  - Prefer intervals playable within one position
+  - Favour adjacent string movement
+  - Allow occasional shifts but discourage excessive leaps
+evaluation:
+  success_conditions:
+    - All dyads playable
+    - No impossible stretches
+  failure_conditions:
+    - Intervals exceed playable hand span
+    - Excessive position shifts
+dependencies: []
+tags: [guitar, playability, two-line, Wyble]
