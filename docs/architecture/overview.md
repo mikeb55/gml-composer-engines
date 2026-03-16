@@ -27,3 +27,7 @@ Primitives → Engines → Conductor → Generated music
 - Primitives: no style knowledge; pure transformation. Transformation and interaction primitives are foundational layers beneath engines and conductor behaviour.
 - Engines: style-specific; know when and how to apply primitives.
 - Conductor: no style; knows how to coordinate engines. Conductor coordination depends on interaction primitives such as handoff, activation windows, and conflict resolution.
+
+## Ecosystem Architecture
+
+For system-wide compositional standards, canonical candidate schema, shared primitives, intelligence layers, and evaluation framework, see [docs/architecture/ecosystem/](ecosystem/README.md).

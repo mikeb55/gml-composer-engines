@@ -1,0 +1,3 @@
+# Python dependencies for composition_ir and passes
+# No external deps required for core IR pass system (uses stdlib copy)
+pytest>=7.0.0

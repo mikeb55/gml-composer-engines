@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "validate": "node scripts/validate-repo.js",
-    "test": "node scripts/validate-repo.js"
+    "test": "node scripts/validate-repo.js",
+    "test:ir": "py -m pytest tests/test_ir_pass_immutability.py -v"
   }
 }

@@ -1,0 +1,109 @@
+{
+  "example_01_verse_chorus": {
+    "title": "Tide",
+    "premise": "Someone waiting at the shore for a return that may never come",
+    "seed": 42,
+    "form": "verse_chorus",
+    "section_order": ["intro", "v1", "pc", "c", "v2", "c", "b", "c", "outro"],
+    "section_roles": {
+      "intro": "setup",
+      "v1": "setup",
+      "pc": "build",
+      "c": "payoff",
+      "v2": "release",
+      "b": "build",
+      "outro": "release"
+    },
+    "hook_dna": {
+      "contour": [0, 2, 4, 2, 0],
+      "rhythm_skeleton": ["q", "q", "e", "q", "h"],
+      "syllable_count": 4,
+      "stress_pattern": [1, 0, 1, 0]
+    },
+    "motif_transforms": [
+      { "section_id": "v1", "kind": "identity" },
+      { "section_id": "c", "kind": "expand", "degree": 1.2 },
+      { "section_id": "b", "kind": "invert" }
+    ],
+    "title_placements": [16, 32, 48],
+    "image_family": ["water", "shore", "tide", "horizon"],
+    "lyric_skeleton": [
+      { "section_id": "v1", "line_count": 4, "rhyme_scheme": "ABAB", "syllable_targets": [8, 7, 8, 6] },
+      { "section_id": "c", "line_count": 4, "rhyme_scheme": "AABB", "syllable_targets": [6, 6, 5, 5] }
+    ],
+    "lyric_density": 0.6,
+    "harmonic_plan": [
+      { "section_id": "v1", "key": "C", "mode": "major", "chord_progression_template": ["I", "V", "vi", "IV"], "tension_level": 0.3 },
+      { "section_id": "c", "key": "C", "mode": "major", "chord_progression_template": ["I", "IV", "V", "I"], "tension_level": 0.7 }
+    ],
+    "contrast_arc": { "start": 0.2, "peak": 0.9, "release": 0.5, "end": 0.3 },
+    "harmonic_adventurousness": 0.4,
+    "export_hints": {
+      "tempo": 72,
+      "key": "C",
+      "time_signature": { "beats": 4, "beatType": 4 },
+      "vocal_range": { "min_midi": 55, "max_midi": 79 }
+    },
+    "musicxml_constraints": {
+      "supported_structures": ["lead_sheet", "full_score"],
+      "required_tags": ["harmony", "rehearsal", "lyric"],
+      "supported_rhythmic_forms": ["4/4", "3/4", "6/8"],
+      "section_markers": ["A", "B", "C", "D"],
+      "lyric_alignment_rules": ["syllabic", "melismatic"],
+      "melody_import_rules": ["pitch_duration", "chord_symbol"],
+      "harmony_annotation_expectations": ["above_staff", "root_bass"],
+      "failure_cases": ["empty_section", "mismatched_lyric_syllables"]
+    }
+  },
+  "example_02_hook_first": {
+    "title": "Run",
+    "premise": "Escape and freedom",
+    "seed": 1001,
+    "form": "verse_chorus",
+    "section_order": ["v1", "c", "v2", "c", "c"],
+    "section_roles": {
+      "v1": "setup",
+      "c": "payoff",
+      "v2": "release"
+    },
+    "hook_dna": {
+      "contour": [0, 4, 7, 4],
+      "rhythm_skeleton": ["q", "q", "h", "h"],
+      "syllable_count": 1,
+      "stress_pattern": [1]
+    },
+    "motif_transforms": [
+      { "section_id": "v1", "kind": "compress" },
+      { "section_id": "c", "kind": "identity" }
+    ],
+    "title_placements": [8, 16, 24],
+    "image_family": ["motion", "road", "wind"],
+    "lyric_skeleton": [
+      { "section_id": "v1", "line_count": 3, "rhyme_scheme": "ABA", "syllable_targets": [8, 9, 7] },
+      { "section_id": "c", "line_count": 2, "rhyme_scheme": "AA", "syllable_targets": [4, 4] }
+    ],
+    "lyric_density": 0.5,
+    "harmonic_plan": [
+      { "section_id": "v1", "key": "G", "mode": "major", "chord_progression_template": ["I", "IV", "V"], "tension_level": 0.4 },
+      { "section_id": "c", "key": "G", "mode": "major", "chord_progression_template": ["I", "V", "IV", "I"], "tension_level": 0.8 }
+    ],
+    "contrast_arc": { "start": 0.3, "peak": 0.95, "release": 0.6, "end": 0.4 },
+    "harmonic_adventurousness": 0.2,
+    "export_hints": {
+      "tempo": 120,
+      "key": "G",
+      "time_signature": { "beats": 4, "beatType": 4 },
+      "vocal_range": { "min_midi": 55, "max_midi": 81 }
+    },
+    "musicxml_constraints": {
+      "supported_structures": ["lead_sheet"],
+      "required_tags": ["harmony", "rehearsal", "lyric"],
+      "supported_rhythmic_forms": ["4/4"],
+      "section_markers": ["V1", "C", "V2"],
+      "lyric_alignment_rules": ["syllabic"],
+      "melody_import_rules": ["pitch_duration"],
+      "harmony_annotation_expectations": ["above_staff"],
+      "failure_cases": ["empty_section"]
+    }
+  }
+}
